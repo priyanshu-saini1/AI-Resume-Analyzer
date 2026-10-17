@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analyzer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>AI Resume Analyzer</h1>
+
+        <p>
+            Analyze your resume against any job description
+            using Generative AI.
+        </p>
+    </header>
+
+    <div class="card">
+
+        <h2>Resume & Job Description</h2>
+
+        <form id="analyzeForm">
+
+            <label>Upload Resume (PDF)</label>
+
+            <input
+                type="file"
+                id="resume"
+                name="resume"
+                accept=".pdf"
+                required
+            >
+
+            <label>Job Description</label>
+
+            <textarea
+                id="job_description"
+                name="job_description"
+                rows="9"
+                placeholder="Paste the job description here..."
+                required
+            ></textarea>
+
+            <button type="submit" id="analyzeBtn">
+                Analyze Resume
+            </button>
+
+        </form>
+
+        <div id="loading" class="hidden">
+            Analyzing your resume using AI...
+        </div>
+
+        <div id="error" class="error hidden"></div>
+
+    </div>
+
+    <div id="results" class="hidden">
+
+        <div class="card score-card">
+
+            <h2>Resume Match Score</h2>
+
+            <div class="score-circle">
+                <span id="score">0%</span>
+            </div>
+
+            <p class="score-note">
+                AI-estimated skills match, not a hiring prediction.
+            </p>
+
+            <p id="summary"></p>
+
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+
+                <h2>Matching Skills</h2>
+
+                <ul id="matchingSkills"></ul>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Missing Skills</h2>
+
+                <ul id="missingSkills"></ul>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Your Strengths</h2>
+
+            <ul id="strengths"></ul>
+
+        </div>
+
+        <div class="card">
+
+            <h2>AI Resume Suggestions</h2>
+
+            <ul id="suggestions"></ul>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Interview Preparation Questions</h2>
+
+            <ul id="interviewQuestions"></ul>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>AI Resume Analyzer | Powered by Gemini API</p>
+    </footer>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
